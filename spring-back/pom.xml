@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.lucas</groupId>
-	<artifactId>guesstheskin</artifactId>
+	<artifactId>spring-back</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>guesstheskin</name>
 	<description>guesstheskin</description>
