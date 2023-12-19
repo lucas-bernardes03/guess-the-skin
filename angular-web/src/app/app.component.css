@@ -1,0 +1,48 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title{
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 48px;
+  font-family: CounterStrike, sans-serif; !important;
+  margin-bottom: 0 !important;
+}
+
+.header {
+  display: flex;
+  align-items: end;
+}
+
+i {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.p-divider{
+  width: 650px
+}
+
+.pi-question-circle{
+  margin-right: 80px
+}
+
+.pi-question-circle:hover{
+  color: #fcac19;
+  transition: 0.4s;
+}
+
+.pi-chart-bar{
+  margin-left: 80px
+}
+
+.pi-chart-bar:hover{
+  color: #28397f;
+  transition: 0.4s;
+}
