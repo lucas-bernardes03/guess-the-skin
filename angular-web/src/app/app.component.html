@@ -13,12 +13,17 @@
   </div>
   <p-divider class="p-divider" type="solid"></p-divider>
 
+  <p-card [style]="{width : '400px', height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center' }">
+    <p-image src="{{mockSkin.image}}" alt="Skin" width="300"></p-image>
+  </p-card>
 
-    <p-card [style]="{width : '400px', height: '200px' }"></p-card>
+  <div class="guesses">
+    <app-guess-row *ngFor="let guess of guesses"></app-guess-row>
+  </div>
 
-    <div class="guesses">
-      <app-guess-row></app-guess-row>
-      <app-guess-row></app-guess-row>
-    </div>
+  <div class="currentGuess">
+    <input class="tinput" placeholder="Guess a Skin..." type="text" pInputText [(ngModel)]="currentGuess" />
+    <p-button styleClass="p-button-success" label="Guess"></p-button>
+  </div>
 
 </div>

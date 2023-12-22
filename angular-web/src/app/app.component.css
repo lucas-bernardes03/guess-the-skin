@@ -56,3 +56,14 @@ i {
 .content{
   align-items: center;
 }
+
+.currentGuess{
+  margin-top: 15px;
+}
+
+.tinput{
+  margin-right: 10px;
+}
+
+
+
