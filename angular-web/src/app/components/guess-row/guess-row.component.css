@@ -1,0 +1,11 @@
+.guess{
+  display: flex;
+  flex-direction: row;
+}
+
+p-card{
+  width: 80px;
+  margin: 5px;
+}
+
+

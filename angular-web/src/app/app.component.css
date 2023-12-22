@@ -11,7 +11,7 @@
 
 h1 {
   font-size: 48px;
-  font-family: CounterStrike, sans-serif; !important;
+  font-family: CounterStrike, sans-serif;
   margin-bottom: 0 !important;
 }
 
@@ -45,4 +45,14 @@ i {
 .pi-chart-bar:hover{
   color: #28397f;
   transition: 0.4s;
+}
+
+.guesses{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.content{
+  align-items: center;
 }
