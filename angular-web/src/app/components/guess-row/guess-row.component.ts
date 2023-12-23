@@ -13,14 +13,16 @@ import {NgForOf} from "@angular/common";
   styleUrl: './guess-row.component.css'
 })
 export class GuessRowComponent {
-  hints = [1, 2, 3, 4, 5, 6]
+  hints = [1, 2, 3, 4, 5, 6, 7]
 
-  setCellStyle(guess : any) : any{
+  setCellStyle(hint : any) : any{
     let style = {
       width: '60px',
       height: '60px',
       margin: '5px',
-      backgroundColor: (guess % 2 == 0) ? '#fcac19':'#28397f'
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
     }
 
     return style

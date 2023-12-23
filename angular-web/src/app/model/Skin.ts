@@ -1,11 +1,21 @@
 export default class Skin {
-  image: string
+  name: string
   weapon: string
-  skin: string
+  yearOfRelease: number
+  container: string
+  rarity: string
+  modifier: string
+  image: string
 
-  constructor(image : string, weapon : string, skin : string) {
-    this.image = image
+  constructor(image : string, weapon : string, name : string, yearOfRelease: number, container:string, rarity:string, modifier:string) {
+    this.name = name
     this.weapon = weapon
-    this.skin = skin
+    this.yearOfRelease = yearOfRelease
+    this.container = container
+    this.rarity = rarity
+    this.modifier = modifier
+    this.image = image
   }
+
+
 }

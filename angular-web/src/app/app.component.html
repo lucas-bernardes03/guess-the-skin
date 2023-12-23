@@ -13,8 +13,8 @@
   </div>
   <p-divider class="p-divider" type="solid"></p-divider>
 
-  <p-card [style]="{width : '400px', height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center' }">
-    <p-image src="{{mockSkin.image}}" alt="Skin" width="300"></p-image>
+  <p-card [style]="{width : '500px', height: '250px', display: 'flex', justifyContent: 'center', alignItems: 'center' }">
+    <p-image *ngIf="currentSkin$ | async as currentSkin" src="{{currentSkin.image}}" alt="Skin" width="400"></p-image>
   </p-card>
 
   <div class="guesses">

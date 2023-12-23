@@ -1,3 +1,5 @@
 <div class="guess">
-  <p-card *ngFor="let hint of hints" [style]="setCellStyle(hint)"></p-card>
+  <p-card *ngFor="let hint of hints" [style]="setCellStyle(hint)">
+    {{hint}}
+  </p-card>
 </div>

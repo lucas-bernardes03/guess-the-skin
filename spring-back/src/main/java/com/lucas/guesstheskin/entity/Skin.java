@@ -20,10 +20,10 @@ public class Skin implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Weapon weapon;
+    private String weapon;
     private Integer yearOfRelease;
     private String container;
-    private Rarity rarity;
-    private Modifier modifier;
+    private String rarity;
+    private String modifier;
     private String image;
 }
