@@ -25,6 +25,7 @@ export class AppComponent implements OnInit{
   currentSkin$ !: Observable<Skin>
   currentGuess !: number
   guesses: Comparison[] = []
+  displayedHeaders: string[] = ['Weapon', 'Year', 'Container', 'Rarity', 'Modifier', 'Collection']
 
   constructor(public service : SkinService) {
 

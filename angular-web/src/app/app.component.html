@@ -18,6 +18,9 @@
   </p-card>
 
   <div class="guesses">
+    <div class="hintHeader">
+      <p class="head" *ngFor="let column of displayedHeaders">{{column}}</p>
+    </div>
     <app-guess-row [guess]="guess" *ngFor="let guess of guesses"></app-guess-row>
   </div>
 

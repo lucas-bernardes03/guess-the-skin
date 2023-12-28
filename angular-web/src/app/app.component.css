@@ -67,5 +67,17 @@ i {
   margin-right: 10px;
 }
 
+.hintHeader{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+}
+
+.head{
+  margin: 5px;
+  width: 120px;
+  text-align: center;
+}
 
 

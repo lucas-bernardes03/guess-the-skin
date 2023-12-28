@@ -28,13 +28,13 @@ export class GuessRowComponent implements OnInit{
 
   setCellStyle(hint : any) : any{
     let style = {
-      width: '60px',
-      height: '60px',
+      width: '120px',
+      height: '55px',
       margin: '5px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: (!hint) ? 'red' : 'green'
+      backgroundColor: (!hint.equals || !(hint.equals === 0)) ? 'red' : 'green',
     }
 
     return style
@@ -49,11 +49,6 @@ export class GuessRowComponent implements OnInit{
 
         case 'skinName':
           this.skinName = value
-          break
-
-        case 'yearsDiff':
-          if(value === 0) this.hints.push(true)
-          else this.hints.push(false)
           break
 
         default:

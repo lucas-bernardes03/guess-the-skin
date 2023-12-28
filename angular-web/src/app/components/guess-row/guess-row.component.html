@@ -4,6 +4,6 @@
     <p class="skinName">{{skinName}}</p>
   </div>
   <p-card *ngFor="let hint of hints" [style]="setCellStyle(hint)">
-    {{hint}}
+    {{hint.value}}
   </p-card>
 </div>

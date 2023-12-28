@@ -2,21 +2,57 @@ export default class Comparison {
   skinImage: String
   skinName: String
 
-  sameWeapon: boolean
-  yearsDiff: number
-  sameContainer: boolean
-  sameRarity: boolean
-  sameModifier: boolean
-  skinCollection: boolean
+  sameWeapon: {
+    "equals": boolean,
+    "value": string
+  }
+  yearsDiff: {
+    "equals": number,
+    "value": number
+  }
+  sameContainer: {
+    "equals": boolean,
+    "value": string
+  }
+  sameRarity: {
+    "equals": boolean,
+    "value": string
+  }
+  sameModifier: {
+    "equals": boolean,
+    "value": string
+  }
+  skinCollection: {
+    "equals": boolean,
+    "value": boolean
+  }
 
   constructor(skinImage: String,
               skinName: String,
-              sameWeapon: boolean,
-              yearsDiff: number,
-              sameContainer: boolean,
-              sameRarity: boolean,
-              sameModifier: boolean,
-              skinCollection: boolean) {
+              sameWeapon: {
+                "equals": boolean,
+                "value": string
+              },
+              yearsDiff: {
+                "equals": number,
+                "value": number
+              },
+              sameContainer: {
+                "equals": boolean,
+                "value": string
+              },
+              sameRarity: {
+                "equals": boolean,
+                "value": string
+              },
+              sameModifier: {
+                "equals": boolean,
+                "value": string
+              },
+              skinCollection: {
+                "equals": boolean,
+                "value": boolean
+              }) {
     this.skinImage = skinImage
     this.skinName = skinName
     this.sameWeapon = sameWeapon

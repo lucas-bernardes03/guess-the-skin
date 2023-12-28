@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 @Data
 @AllArgsConstructor
@@ -12,11 +13,10 @@ import java.io.Serializable;
 public class SkinGuess implements Serializable {
     private String skinName;
     private String skinImage;
-
-    private boolean sameWeapon;
-    private Integer yearsDiff;
-    private boolean sameContainer;
-    private boolean sameRarity;
-    private boolean sameModifier;
-    private boolean skinCollection;
+    private HashMap<String, Object> sameWeapon;
+    private HashMap<String, Object> yearsDiff;
+    private HashMap<String, Object> sameContainer;
+    private HashMap<String, Object> sameRarity;
+    private HashMap<String, Object> sameModifier;
+    private HashMap<String, Object> skinCollection;
 }
