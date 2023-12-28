@@ -10,7 +10,15 @@ export class SkinService {
   constructor(public http : HttpClient) { }
 
   getSkin() : Observable<any>{
-    return this.http.get('http://localhost:8080/skin')
+    return this.http.get('http://localhost:8080/skin/daily')
+  }
+
+  guess(id : number) : Observable<any>{
+    let body = {
+      id: id
+    }
+
+    return this.http.post('http://localhost:8080/skin/guess', body)
   }
 
 }

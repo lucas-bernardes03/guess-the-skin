@@ -18,12 +18,12 @@
   </p-card>
 
   <div class="guesses">
-    <app-guess-row *ngFor="let guess of guesses"></app-guess-row>
+    <app-guess-row [guess]="guess" *ngFor="let guess of guesses"></app-guess-row>
   </div>
 
   <div class="currentGuess">
     <input class="tinput" placeholder="Guess a Skin..." type="text" pInputText [(ngModel)]="currentGuess" />
-    <p-button styleClass="p-button-success" label="Guess"></p-button>
+    <p-button styleClass="p-button-success" label="Guess" (click)="guess()"></p-button>
   </div>
 
 </div>

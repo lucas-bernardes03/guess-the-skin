@@ -1,4 +1,8 @@
 <div class="guess">
+  <div class="skinIdentifier">
+    <p-image src="{{skinImage}}" alt="Skin" width="80"></p-image>
+    <p class="skinName">{{skinName}}</p>
+  </div>
   <p-card *ngFor="let hint of hints" [style]="setCellStyle(hint)">
     {{hint}}
   </p-card>

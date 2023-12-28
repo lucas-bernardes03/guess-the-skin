@@ -1,19 +1,30 @@
-import {Component} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CardModule} from "primeng/card";
-import {NgForOf} from "@angular/common";
+import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
+import Comparison from "../../model/Comparison";
+import {ImageModule} from "primeng/image";
 
 @Component({
   selector: 'app-guess-row',
   standalone: true,
   imports: [
     CardModule,
-    NgForOf
+    NgForOf,
+    AsyncPipe,
+    ImageModule,
+    NgIf
   ],
   templateUrl: './guess-row.component.html',
   styleUrl: './guess-row.component.css'
 })
-export class GuessRowComponent {
-  hints = [1, 2, 3, 4, 5, 6, 7]
+export class GuessRowComponent implements OnInit{
+  @Input()
+  guess !: Comparison
+
+  skinName !: string
+  skinImage !: string
+
+  hints : any[] = []
 
   setCellStyle(hint : any) : any{
     let style = {
@@ -23,8 +34,31 @@ export class GuessRowComponent {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      backgroundColor: (!hint) ? 'red' : 'green'
     }
 
     return style
+  }
+
+  ngOnInit(): void {
+    Object.entries(this.guess).forEach(([key, value]) => {
+      switch (key){
+        case 'skinImage':
+          this.skinImage = value
+          break
+
+        case 'skinName':
+          this.skinName = value
+          break
+
+        case 'yearsDiff':
+          if(value === 0) this.hints.push(true)
+          else this.hints.push(false)
+          break
+
+        default:
+          this.hints.push(value)
+      }
+    })
   }
 }

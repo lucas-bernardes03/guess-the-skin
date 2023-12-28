@@ -52,6 +52,7 @@ i {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
+  height: 420px;
 }
 
 .content{

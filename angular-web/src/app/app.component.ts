@@ -12,6 +12,7 @@ import Skin from "./model/Skin";
 import { ImageModule } from "primeng/image";
 import {SkinService} from "./service/skin.service";
 import {Observable} from "rxjs";
+import Comparison from "./model/Comparison";
 
 @Component({
   selector: 'app-root',
@@ -22,8 +23,8 @@ import {Observable} from "rxjs";
 })
 export class AppComponent implements OnInit{
   currentSkin$ !: Observable<Skin>
-  currentGuess: string = ''
-  guesses = [1,2,3,4,5,6]
+  currentGuess !: number
+  guesses: Comparison[] = []
 
   constructor(public service : SkinService) {
 
@@ -33,6 +34,20 @@ export class AppComponent implements OnInit{
     this.currentSkin$ = this.service.getSkin()
   }
 
-  //TODO SETAR 1 SKIN POR SERVER, AJUSTAR CSS, INPUT DE DADOS POR COMPONENTE
+  guess(): void {
+    if(this.guesses.length < 6 && this.currentGuess) {
+      this.service.guess(this.currentGuess).subscribe((data : Comparison) => {
+        if(data){
+          let comparison = new Comparison(data.skinImage, data.skinName, data.sameWeapon, data.yearsDiff, data.sameContainer, data.sameRarity, data.sameModifier, data.skinCollection)
+          this.guesses.push(comparison)
+        }
+      })
+    }
+  }
+
+  //TODO
+  //AJUSTAR CSS / DIVIDER ENTRE O NOME E OS HINTS / ESTILIZAÇÃO DAS HINTS
+  //ARRUMAR OS DADOS DOS HINTS
+  //ANIMAÇÕES DO HINT
 
 }
