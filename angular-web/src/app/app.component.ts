@@ -8,31 +8,47 @@ import { FormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
 import { RippleModule } from "primeng/ripple";
 import { InputTextModule } from "primeng/inputtext";
-import Skin from "./model/Skin";
 import { ImageModule } from "primeng/image";
 import {SkinService} from "./service/skin.service";
 import {Observable} from "rxjs";
 import Comparison from "./model/Comparison";
+import {AutoCompleteCompleteEvent, AutoCompleteModule} from "primeng/autocomplete";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, DividerModule, CardModule, GuessRowComponent, FormsModule, ButtonModule, RippleModule, InputTextModule, NgOptimizedImage, ImageModule],
+  imports: [CommonModule, RouterOutlet, DividerModule, CardModule, GuessRowComponent, FormsModule, ButtonModule, RippleModule, InputTextModule, NgOptimizedImage, ImageModule, AutoCompleteModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit{
-  currentSkin$ !: Observable<Skin>
-  currentGuess !: number
+  image$ !: Observable<any>
+  autocompleteList : string[] = []
+
+  currentGuess !: any
   guesses: Comparison[] = []
   displayedHeaders: string[] = ['Weapon', 'Year', 'Container', 'Rarity', 'Modifier', 'Collection']
+
+  getStyle() : any{
+    return {
+      width : '500px',
+      height: '250px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
+  }
 
   constructor(public service : SkinService) {
 
   }
 
   ngOnInit(): void {
-    this.currentSkin$ = this.service.getSkin()
+    this.image$ = this.service.getSkin()
+    this.service.getNameList().subscribe((data : any) => {
+      if(data) this.autocompleteList = data
+      console.log('autocomplete', this.autocompleteList)
+    })
   }
 
   guess(): void {
@@ -42,8 +58,14 @@ export class AppComponent implements OnInit{
           let comparison = new Comparison(data.skinImage, data.skinName, data.sameWeapon, data.yearsDiff, data.sameContainer, data.sameRarity, data.sameModifier, data.skinCollection)
           this.guesses.push(comparison)
         }
+
+        this.currentGuess = null
       })
     }
+  }
+
+  filter(event : AutoCompleteCompleteEvent, ){
+    //TODO
   }
 
   //TODO

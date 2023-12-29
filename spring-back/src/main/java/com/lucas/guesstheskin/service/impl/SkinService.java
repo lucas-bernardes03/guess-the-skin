@@ -7,6 +7,7 @@ import com.lucas.guesstheskin.service.ISkinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -15,7 +16,7 @@ public class SkinService implements ISkinService {
     @Autowired
     private ISkinRepository repository;
 
-    private Skin dailySkin;
+    HashMap<String, Object> dataMap = new HashMap<>();
 
     public List<Skin> findAll() {
         return repository.findAll();
@@ -25,13 +26,19 @@ public class SkinService implements ISkinService {
         return repository.findRandomSkin();
     }
 
-    public Skin getDailySkin(){
-        if(dailySkin == null) this.dailySkin = getRandomSkin();
-        return this.dailySkin;
-    }
-
     public SkinGuess getGuess(Long id){
         Skin skinGuessed = repository.findById(id).get();
-        return this.dailySkin.compareGuess(skinGuessed);
+        return ((Skin) this.dataMap.get("skin")).compareGuess(skinGuessed);
     }
+
+    public Object getStartupData(String param){
+        getData();
+        return this.dataMap.get(param);
+    }
+
+    private void getData(){
+        if(dataMap.get("skin") == null) this.dataMap.put("skin", getRandomSkin());
+        if(dataMap.get("nameList") == null) this.dataMap.put("nameList", repository.getAllNames());
+    }
+
 }

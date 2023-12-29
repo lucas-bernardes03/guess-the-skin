@@ -13,19 +13,20 @@
   </div>
   <p-divider class="p-divider" type="solid"></p-divider>
 
-  <p-card [style]="{width : '500px', height: '250px', display: 'flex', justifyContent: 'center', alignItems: 'center' }">
-    <p-image *ngIf="currentSkin$ | async as currentSkin" src="{{currentSkin.image}}" alt="Skin" width="400"></p-image>
+  <p-card [style]="getStyle()">
+    <p-image *ngIf="image$ | async as image" src="{{image.image}}" alt="Skin" width="400"></p-image>
   </p-card>
 
   <div class="guesses">
     <div class="hintHeader">
+      <p style="width: 300px; text-align: center">Name</p>
       <p class="head" *ngFor="let column of displayedHeaders">{{column}}</p>
     </div>
     <app-guess-row [guess]="guess" *ngFor="let guess of guesses"></app-guess-row>
   </div>
 
   <div class="currentGuess">
-    <input class="tinput" placeholder="Guess a Skin..." type="text" pInputText [(ngModel)]="currentGuess" />
+    <p-autoComplete placeholder="Guess a Skin..." type="text" pInputText [(ngModel)]="currentGuess"  [suggestions]="autocompleteList" (completeMethod)="filter($event)"/>
     <p-button styleClass="p-button-success" label="Guess" (click)="guess()"></p-button>
   </div>
 

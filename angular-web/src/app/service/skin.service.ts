@@ -13,6 +13,10 @@ export class SkinService {
     return this.http.get('http://localhost:8080/skin/daily')
   }
 
+  getNameList() : Observable<any>{
+    return this.http.get('http://localhost:8080/skin/nameList')
+  }
+
   guess(id : number) : Observable<any>{
     let body = {
       id: id

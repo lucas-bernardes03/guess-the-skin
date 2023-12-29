@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -30,9 +31,16 @@ public class SkinController {
     }
 
     @GetMapping(value = "/daily")
-    public ResponseEntity<Skin> getDaily(){
-        Skin s = service.getDailySkin();
-        return ResponseEntity.ok(s);
+    public ResponseEntity<HashMap<String, String>> getDaily(){
+        HashMap<String, String> image = new HashMap<>();
+        image.put("image", ((Skin) service.getStartupData("skin")).getImage());
+        return ResponseEntity.ok(image);
+    }
+
+    @GetMapping(value = "/nameList")
+    public ResponseEntity<List<String>> getNameList(){
+        List<String> list = (List<String>) service.getStartupData("nameList");
+        return ResponseEntity.ok(list);
     }
 
     @PostMapping(value = "/guess")

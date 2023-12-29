@@ -49,7 +49,7 @@ i {
 }
 
 .guesses{
-  margin-top: 20px;
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
   height: 420px;
