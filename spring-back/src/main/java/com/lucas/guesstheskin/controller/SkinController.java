@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping(value = "/skin")
@@ -38,8 +39,8 @@ public class SkinController {
     }
 
     @GetMapping(value = "/nameList")
-    public ResponseEntity<List<String>> getNameList(){
-        List<String> list = (List<String>) service.getStartupData("nameList");
+    public ResponseEntity<List<HashMap<String, Object>>> getNameList(){
+        List<HashMap<String, Object>> list = (List<HashMap<String, Object>>) service.getStartupData("nameList");
         return ResponseEntity.ok(list);
     }
 

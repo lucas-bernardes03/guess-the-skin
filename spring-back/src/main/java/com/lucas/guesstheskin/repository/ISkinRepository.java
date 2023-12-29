@@ -13,6 +13,6 @@ public interface ISkinRepository extends JpaRepository<Skin, Long> {
     @Query("SELECT s FROM Skin s ORDER BY RAND() LIMIT 1")
     Skin findRandomSkin();
 
-    @Query("SELECT concat(s.weapon, ' | ', s.name) FROM Skin s")
-    List<String> getAllNames();
+    @Query("SELECT s.id , concat(s.weapon, ' | ', s.name) FROM Skin s")
+    List<Object[]> getAllNamesAndIds();
 }

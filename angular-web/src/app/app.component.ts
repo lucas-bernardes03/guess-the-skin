@@ -23,11 +23,12 @@ import {AutoCompleteCompleteEvent, AutoCompleteModule} from "primeng/autocomplet
 })
 export class AppComponent implements OnInit{
   image$ !: Observable<any>
-  autocompleteList : string[] = []
+  autocompleteList : any[] = []
+  filteredList: string[] = []
 
   currentGuess !: any
   guesses: Comparison[] = []
-  displayedHeaders: string[] = ['Weapon', 'Year', 'Container', 'Rarity', 'Modifier', 'Collection']
+  displayedHeaders: string[] = ['Weapon', 'Year', 'Container']
 
   getStyle() : any{
     return {
@@ -47,13 +48,12 @@ export class AppComponent implements OnInit{
     this.image$ = this.service.getSkin()
     this.service.getNameList().subscribe((data : any) => {
       if(data) this.autocompleteList = data
-      console.log('autocomplete', this.autocompleteList)
     })
   }
 
   guess(): void {
     if(this.guesses.length < 6 && this.currentGuess) {
-      this.service.guess(this.currentGuess).subscribe((data : Comparison) => {
+      this.service.guess(this.currentGuess.id).subscribe((data : Comparison) => {
         if(data){
           let comparison = new Comparison(data.skinImage, data.skinName, data.sameWeapon, data.yearsDiff, data.sameContainer, data.sameRarity, data.sameModifier, data.skinCollection)
           this.guesses.push(comparison)
@@ -65,12 +65,21 @@ export class AppComponent implements OnInit{
   }
 
   filter(event : AutoCompleteCompleteEvent, ){
-    //TODO
+    let filtered: any[] = [];
+    let query = event.query;
+
+    this.autocompleteList.forEach(skin => {
+      if (skin.name.toLowerCase().includes(query.toLowerCase())) {
+        filtered.push(skin);
+      }
+    })
+
+    this.filteredList = filtered;
   }
 
   //TODO
   //AJUSTAR CSS / DIVIDER ENTRE O NOME E OS HINTS / ESTILIZAÇÃO DAS HINTS
-  //ARRUMAR OS DADOS DOS HINTS
   //ANIMAÇÕES DO HINT
+  //WIDTH DO OVERLAY DO AUTOCOMPLETE
 
 }

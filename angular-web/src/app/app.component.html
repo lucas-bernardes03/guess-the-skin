@@ -21,12 +21,15 @@
     <div class="hintHeader">
       <p style="width: 300px; text-align: center">Name</p>
       <p class="head" *ngFor="let column of displayedHeaders">{{column}}</p>
+      <p class="head">Rarity</p>
+      <p class="head">Modifier</p>
+      <p class="head">Collection</p>
     </div>
     <app-guess-row [guess]="guess" *ngFor="let guess of guesses"></app-guess-row>
   </div>
 
-  <div class="currentGuess">
-    <p-autoComplete placeholder="Guess a Skin..." type="text" pInputText [(ngModel)]="currentGuess"  [suggestions]="autocompleteList" (completeMethod)="filter($event)"/>
+  <div class="currentGuess" (keydown.enter)="guess()">
+    <p-autoComplete placeholder="Guess a Skin..." [(ngModel)]="currentGuess"  [suggestions]="filteredList" (completeMethod)="filter($event)" field="name"/>
     <p-button styleClass="p-button-success" label="Guess" (click)="guess()"></p-button>
   </div>
 

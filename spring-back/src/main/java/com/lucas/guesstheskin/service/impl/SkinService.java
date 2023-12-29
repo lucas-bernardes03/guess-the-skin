@@ -7,6 +7,7 @@ import com.lucas.guesstheskin.service.ISkinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -38,7 +39,21 @@ public class SkinService implements ISkinService {
 
     private void getData(){
         if(dataMap.get("skin") == null) this.dataMap.put("skin", getRandomSkin());
-        if(dataMap.get("nameList") == null) this.dataMap.put("nameList", repository.getAllNames());
+
+        if(dataMap.get("nameList") == null){
+            List<Object[]> list = repository.getAllNamesAndIds();
+            List<HashMap<String, Object>> mapList = new ArrayList<>();
+
+            for(Object[] obj : list){
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("id", obj[0]);
+                map.put("name", obj[1]);
+
+                mapList.add(map);
+            }
+
+            this.dataMap.put("nameList", mapList);
+        }
     }
 
 }

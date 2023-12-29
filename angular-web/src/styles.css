@@ -27,11 +27,16 @@ html {
   box-shadow: 0 0 0 2px #1c2127, 0 0 0 4px rgb(252, 172, 25), 0 1px 2px 0 rgba(0, 0, 0, 0);
 }
 
-.tinput:hover{
+.p-inputtext{
+  margin-right: 10px;
+  width: 310px;
+}
+
+.p-inputtext:hover{
   border: #fcac19 1px solid;
 }
 
-.tinput:focus{
+.p-inputtext:focus{
   border: #fcac19 1px solid;
   box-shadow: none;
 }
