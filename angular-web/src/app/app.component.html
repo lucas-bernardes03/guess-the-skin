@@ -21,9 +21,18 @@
     <div class="hintHeader">
       <p style="width: 300px; text-align: center">Name</p>
       <p class="head" *ngFor="let column of displayedHeaders">{{column}}</p>
-      <p class="head">Rarity</p>
-      <p class="head">Modifier</p>
-      <p class="head">Collection</p>
+      <p class="head">
+        Rarity
+        <i style="margin-left: 5px; font-size: 20px" class="pi pi-question-circle"></i>
+      </p>
+      <p class="head">
+        Modifier
+        <i style="margin-left: 5px; font-size: 20px" class="pi pi-question-circle"></i>
+      </p>
+      <p class="head">
+        Collection
+        <i style="margin-left: 5px; font-size: 20px" class="pi pi-question-circle"></i>
+      </p>
     </div>
     <app-guess-row [guess]="guess" *ngFor="let guess of guesses"></app-guess-row>
   </div>

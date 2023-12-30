@@ -40,15 +40,16 @@ export class AppComponent implements OnInit{
     }
   }
 
-  constructor(public service : SkinService) {
-
-  }
+  constructor(public service : SkinService) { }
 
   ngOnInit(): void {
+    this.loadPreviousState()
+
     this.image$ = this.service.getSkin()
     this.service.getNameList().subscribe((data : any) => {
       if(data) this.autocompleteList = data
     })
+
   }
 
   guess(): void {
@@ -56,7 +57,7 @@ export class AppComponent implements OnInit{
       this.service.guess(this.currentGuess.id).subscribe((data : Comparison) => {
         if(data){
           let comparison = new Comparison(data.skinImage, data.skinName, data.sameWeapon, data.yearsDiff, data.sameContainer, data.sameRarity, data.sameModifier, data.skinCollection)
-          this.guesses.push(comparison)
+          this.addGuess(comparison)
         }
 
         this.currentGuess = null
@@ -77,9 +78,24 @@ export class AppComponent implements OnInit{
     this.filteredList = filtered;
   }
 
+  addGuess(comparison : any){
+    this.guesses.push(comparison)
+    localStorage.setItem("guesses", JSON.stringify(this.guesses))
+  }
+
+
+  private loadPreviousState(){
+    if(localStorage.getItem("guesses") != null){
+      this.guesses = JSON.parse(localStorage.getItem("guesses")!)
+
+      //2 REFRESH LIMPA O LOCALSTORAGE - TESTE
+      localStorage.clear()
+    }
+  }
+
   //TODO
   //AJUSTAR CSS / DIVIDER ENTRE O NOME E OS HINTS / ESTILIZAÇÃO DAS HINTS
   //ANIMAÇÕES DO HINT
   //WIDTH DO OVERLAY DO AUTOCOMPLETE
-
+  //TOOLTIP OU CARD DE AJUDA
 }
