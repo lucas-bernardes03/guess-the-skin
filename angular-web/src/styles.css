@@ -40,3 +40,7 @@ html {
   border: #fcac19 1px solid;
   box-shadow: none;
 }
+
+.p-tooltip .p-tooltip-text {
+  width: 300px; !important;
+}

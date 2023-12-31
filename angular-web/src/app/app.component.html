@@ -20,19 +20,54 @@
   <div class="guesses">
     <div class="hintHeader">
       <p style="width: 300px; text-align: center">Name</p>
+
       <p class="head" *ngFor="let column of displayedHeaders">{{column}}</p>
+
       <p class="head">
         Rarity
-        <i style="margin-left: 5px; font-size: 20px" class="pi pi-question-circle"></i>
+        <i style="margin-left: 5px; margin-right: 0; font-size: 20px" class="pi pi-question-circle" [pTooltip]="rarityTooltip" [escape]="false"></i>
+        <ng-template #rarityTooltip>
+          <div class="tooltipHeader">Rarity</div>
+          <div class="rarityTooltipContent">
+            Mil-Spec = <p style="color: blue; margin-left: 5px">Blue</p>
+          </div>
+          <div class="rarityTooltipContent">
+            Restricted = <p style="color: purple; margin-left: 5px">Purple</p>
+          </div>
+          <div class="rarityTooltipContent">
+            Classified = <p style="color: deeppink; margin-left: 5px">Pink</p>
+          </div>
+          <div class="rarityTooltipContent">
+            Covert = <p style="color: red; margin-left: 5px">Red</p>
+          </div>
+          <div class="rarityTooltipContent">
+            Contraband = <p style="color: orange; margin-left: 5px">Orange</p>
+          </div>
+        </ng-template>
       </p>
+
       <p class="head">
         Modifier
-        <i style="margin-left: 5px; font-size: 20px" class="pi pi-question-circle"></i>
+        <i style="margin-left: 5px; margin-right: 0; font-size: 20px" class="pi pi-question-circle" [pTooltip]="modifierTooltip" [escape]="false"></i>
+        <ng-template #modifierTooltip>
+          <div class="tooltipHeader">Modifier</div>
+          <div style="display: flex; flex-direction: column">
+            <span style="margin-top: 10px"><b>StatTrak™: </b> Skins that have a kill count. Found in normal cases.</span>
+            <span style="margin-top: 10px"><b>Souvenir: </b> Skins that have golden stickers from the round the package was dropped during a CS Major Championship. Found in Souvenir Packages.</span>
+            <span style="margin-top: 10px"><b>None: </b> Skins that don't have a modifier. Obtainable during CS Operations.</span>
+          </div>
+        </ng-template>
       </p>
+
       <p class="head">
         Collection
-        <i style="margin-left: 5px; font-size: 20px" class="pi pi-question-circle"></i>
+        <i style="margin-left: 5px; margin-right: 0; font-size: 20px" class="pi pi-question-circle" [pTooltip]="collectionTooltip" [escape]="false"></i>
+        <ng-template #collectionTooltip>
+          <div class="tooltipHeader">Collection</div>
+          <span>Whether or not the same skin is present on more than one gun. Example: <b>Neo-Noir</b>, <b>Asiimov</b>, <b>Printstream</b>, etc...</span>
+        </ng-template>
       </p>
+
     </div>
     <app-guess-row [guess]="guess" *ngFor="let guess of guesses"></app-guess-row>
   </div>

@@ -81,6 +81,20 @@ i {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
 }
 
+.tooltipHeader{
+  text-align: center;
+  font-size: larger;
+  margin-bottom: 10px;
+}
+
+.rarityTooltipContent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 30px;
+}
 

@@ -13,11 +13,12 @@ import {SkinService} from "./service/skin.service";
 import {Observable} from "rxjs";
 import Comparison from "./model/Comparison";
 import {AutoCompleteCompleteEvent, AutoCompleteModule} from "primeng/autocomplete";
+import {TooltipModule} from "primeng/tooltip";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, DividerModule, CardModule, GuessRowComponent, FormsModule, ButtonModule, RippleModule, InputTextModule, NgOptimizedImage, ImageModule, AutoCompleteModule],
+  imports: [CommonModule, RouterOutlet, DividerModule, CardModule, GuessRowComponent, FormsModule, ButtonModule, RippleModule, InputTextModule, NgOptimizedImage, ImageModule, AutoCompleteModule, TooltipModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -94,8 +95,11 @@ export class AppComponent implements OnInit{
   }
 
   //TODO
-  //AJUSTAR CSS / DIVIDER ENTRE O NOME E OS HINTS / ESTILIZAÇÃO DAS HINTS
+  //ESTILIZAÇÃO DAS HINTS
   //ANIMAÇÕES DO HINT
   //WIDTH DO OVERLAY DO AUTOCOMPLETE
-  //TOOLTIP OU CARD DE AJUDA
+  //MODAL DE GUIA/INSTRUCOES
+  //SISTEMA DE HISTORICO
+  //VERIFICACAO DE JOGO COMPLETO / NUMERO TENTATIVAS/ GUESS CORRETO
 }
+
