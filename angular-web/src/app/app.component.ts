@@ -14,6 +14,8 @@ import {Observable} from "rxjs";
 import Comparison from "./model/Comparison";
 import {AutoCompleteCompleteEvent, AutoCompleteModule} from "primeng/autocomplete";
 import {TooltipModule} from "primeng/tooltip";
+import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
+import {EndGameModalComponent} from "./components/end-game-modal/end-game-modal.component";
 
 @Component({
   selector: 'app-root',
@@ -27,9 +29,14 @@ export class AppComponent implements OnInit{
   autocompleteList : any[] = []
   filteredList: string[] = []
 
+  gameEnded : boolean = false
   currentGuess !: any
   guesses: Comparison[] = []
   displayedHeaders: string[] = ['Weapon', 'Year', 'Container']
+
+  ref : DynamicDialogRef | undefined
+
+  constructor(public service : SkinService, public dialogService: DialogService) { }
 
   getStyle() : any{
     return {
@@ -40,8 +47,6 @@ export class AppComponent implements OnInit{
       alignItems: 'center'
     }
   }
-
-  constructor(public service : SkinService) { }
 
   ngOnInit(): void {
     if(typeof window !== "undefined") this.loadPreviousState()
@@ -59,10 +64,31 @@ export class AppComponent implements OnInit{
         if(data){
           let comparison = new Comparison(data.skinImage, data.skinName, data.sameWeapon, data.yearsDiff, data.sameContainer, data.sameRarity, data.sameModifier, data.skinCollection)
           this.addGuess(comparison)
+
+          let correctGuess = this.verifyGuess(comparison)
+
+          if(correctGuess){
+            this.gameEnded = true
+            this.showDialog(true)
+            localStorage.setItem("gameEnded", 'won')
+          }
+          else if(!correctGuess && this.guesses.length == 6){
+            this.gameEnded = true
+            this.showDialog(false)
+            localStorage.setItem("gameEnded", 'lost')
+          }
+
         }
 
         this.currentGuess = null
       })
+    }
+
+    else{
+      this.gameEnded = true
+      this.showDialog(false)
+      localStorage.setItem("gameEnded", 'lost')
+      this.currentGuess = null
     }
   }
 
@@ -79,6 +105,31 @@ export class AppComponent implements OnInit{
     this.filteredList = filtered;
   }
 
+  verifyGuess(comparison:Comparison){
+    let correct = true;
+
+    Object.entries(comparison).forEach(([key, value]) => {
+      if(!correct) return
+
+      switch (key){
+        case 'skinImage':
+          break
+
+        case 'skinName':
+          break
+
+        case 'yearsDiff':
+          correct = (value.equals === 0)
+          break
+
+        default:
+          correct = value
+      }
+    })
+
+    return correct
+  }
+
   addGuess(comparison : any){
     this.guesses.push(comparison)
     localStorage.setItem("guesses", JSON.stringify(this.guesses))
@@ -86,20 +137,43 @@ export class AppComponent implements OnInit{
 
 
   private loadPreviousState() {
+
     if (localStorage.getItem("guesses") != null) {
       this.guesses = JSON.parse(localStorage.getItem("guesses")!)
+
+      // //2 REFRESH LIMPA O LOCALSTORAGE - TESTE
+      // localStorage.clear()
+    }
+
+    if (localStorage.getItem("gameEnded") != null) {
+      this.gameEnded = true
+      let result = localStorage.getItem("gameEnded")
+      this.showDialog((result == 'won'))
 
       //2 REFRESH LIMPA O LOCALSTORAGE - TESTE
       localStorage.clear()
     }
   }
 
+  showDialog(won:boolean){
+    this.ref = this.dialogService.open(EndGameModalComponent, {
+      data: {
+        win: won
+      },
+      header: won ? "Congratulations!" : "You Lost :(",
+      modal:true,
+      dismissableMask: true,
+      closeOnEscape: true
+    })
+  }
+
   //TODO
   //ESTILIZAÇÃO DAS HINTS
   //ANIMAÇÕES DO HINT
-  //WIDTH DO OVERLAY DO AUTOCOMPLETE
   //MODAL DE GUIA/INSTRUCOES
   //SISTEMA DE HISTORICO
-  //VERIFICACAO DE JOGO COMPLETO / NUMERO TENTATIVAS/ GUESS CORRETO
+  //DETALHAR MODAL END GAME
+  //ACESSIBILIDADE
+  //PERSISTIR DADOS DO JOGO NO REFRESH
 }
 

@@ -73,8 +73,8 @@
   </div>
 
   <div class="currentGuess" (keydown.enter)="guess()">
-    <p-autoComplete placeholder="Guess a Skin..." [(ngModel)]="currentGuess"  [suggestions]="filteredList" (completeMethod)="filter($event)" field="name"/>
-    <p-button styleClass="p-button-success" label="Guess" (click)="guess()"></p-button>
+    <p-autoComplete [disabled]="gameEnded" placeholder="Guess a Skin..." [(ngModel)]="currentGuess"  [suggestions]="filteredList" (completeMethod)="filter($event)" field="name"/>
+    <p-button [disabled]="gameEnded" styleClass="p-button-success" label="Guess" (click)="guess()"></p-button>
   </div>
 
 </div>
