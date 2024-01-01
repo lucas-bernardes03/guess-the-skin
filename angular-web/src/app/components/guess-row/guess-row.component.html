@@ -1,9 +1,9 @@
-<div class="guess">
+<div [@fade] class="guess">
   <div class="skinIdentifier">
     <p-image src="{{skinImage}}" alt="Skin" width="80"></p-image>
     <p class="skinName">{{skinName}}</p>
   </div>
-  <p-card *ngFor="let hint of hints" [style]="setCellStyle(hint)">
+  <p-card [@fade]="hints.length" *ngFor="let hint of hints" [style]="setCellStyle(hint)">
     {{hint.value}}
   </p-card>
 </div>

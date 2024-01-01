@@ -3,6 +3,7 @@ import {CardModule} from "primeng/card";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import Comparison from "../../model/Comparison";
 import {ImageModule} from "primeng/image";
+import {animate, query, stagger, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-guess-row',
@@ -15,7 +16,18 @@ import {ImageModule} from "primeng/image";
     NgIf
   ],
   templateUrl: './guess-row.component.html',
-  styleUrl: './guess-row.component.css'
+  styleUrl: './guess-row.component.css',
+  animations: [
+    trigger('fade', [
+      transition('* => *', [
+        query(':enter', [
+          style({ opacity:0, transform: 'translateX(-50px)' }),
+          stagger(400, [ animate(250, style({ opacity: 1, transform: 'translateX(0)'}))])
+          ], {optional : true}
+        )
+      ])
+    ])
+  ]
 })
 export class GuessRowComponent implements OnInit{
   @Input()

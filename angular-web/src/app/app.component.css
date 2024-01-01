@@ -52,7 +52,6 @@ i {
   margin-top: 15px;
   display: flex;
   flex-direction: column;
-  height: 420px;
 }
 
 .content{
@@ -61,6 +60,8 @@ i {
 
 .currentGuess{
   margin-top: 15px;
+  position: fixed;
+  bottom: 15px;
 }
 
 .tinput{

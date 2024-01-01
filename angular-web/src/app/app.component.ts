@@ -44,7 +44,7 @@ export class AppComponent implements OnInit{
   constructor(public service : SkinService) { }
 
   ngOnInit(): void {
-    this.loadPreviousState()
+    if(typeof window !== "undefined") this.loadPreviousState()
 
     this.image$ = this.service.getSkin()
     this.service.getNameList().subscribe((data : any) => {
@@ -85,8 +85,8 @@ export class AppComponent implements OnInit{
   }
 
 
-  private loadPreviousState(){
-    if(localStorage.getItem("guesses") != null){
+  private loadPreviousState() {
+    if (localStorage.getItem("guesses") != null) {
       this.guesses = JSON.parse(localStorage.getItem("guesses")!)
 
       //2 REFRESH LIMPA O LOCALSTORAGE - TESTE
