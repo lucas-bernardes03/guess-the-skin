@@ -158,22 +158,31 @@ export class AppComponent implements OnInit{
   showDialog(won:boolean){
     this.ref = this.dialogService.open(EndGameModalComponent, {
       data: {
-        win: won
+        win: won,
+        statistics: {
+          totalGames: 10,
+          gamesWon: 10,
+          currentStreak: 10,
+          largestStreak: 10,
+          distribution: [0, 2, 5, 1, 1, 1, 0]
+        }
       },
       header: won ? "Congratulations!" : "You Lost :(",
       modal:true,
       dismissableMask: true,
-      closeOnEscape: true
+      closeOnEscape: true,
+      width: '600px',
+      height: '700px'
     })
   }
 
   //TODO
-  //ESTILIZAÇÃO DAS HINTS
+  //ESTILIZAÇÃO DAS HINTS - melhor exibiçaõ das dicas
   //ANIMAÇÕES DO HINT
   //MODAL DE GUIA/INSTRUCOES
-  //SISTEMA DE HISTORICO
-  //DETALHAR MODAL END GAME
-  //ACESSIBILIDADE
-  //PERSISTIR DADOS DO JOGO NO REFRESH
+  //SISTEMA DE HISTORICO - setar e alterar o localStorage
+  //DETALHAR MODAL END GAME - estilização do chart / countdown ate o proximo jogo
+  //ACESSIBILIDADE - ariaLabels
+  //PERSISTIR DADOS DO JOGO NO REFRESH - fixes no sistema do localstorage
 }
 

@@ -1,0 +1,20 @@
+.statisticsHead{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.statData{
+  font-size: 40px;
+  margin: 0;
+}
+
+.statInfo{
+  opacity: 50%;
+  margin-top: 5px;
+}
+
+.chart{
+  margin-top: 20px;
+}

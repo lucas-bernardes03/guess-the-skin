@@ -1,1 +1,27 @@
-<p>end-game-modal works!</p>
+<div style="text-align: center">
+  <h2>Statistics</h2>
+  <div class="statisticsHead">
+    <div>
+      <p class="statData">{{statistics.totalGames}}</p>
+      <p class="statInfo">Games Played</p>
+    </div>
+    <div>
+      <p class="statData">{{statistics.gamesWon/statistics.totalGames*100}}%</p>
+      <p class="statInfo">Win %</p>
+    </div>
+    <div>
+      <p class="statData">{{statistics.currentStreak}}</p>
+      <p class="statInfo">Streak</p>
+    </div>
+    <div>
+      <p class="statData">{{statistics.largestStreak}}</p>
+      <p class="statInfo">Max Streak</p>
+    </div>
+  </div>
+
+  <div class="chart">
+    <h2>Shots Taken</h2>
+
+    <p-chart type="bar" [data]="data" [options]="options"></p-chart>
+  </div>
+</div>

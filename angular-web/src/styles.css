@@ -44,3 +44,11 @@ html {
 .p-tooltip .p-tooltip-text {
   width: 300px !important;
 }
+
+.p-dialog .p-dialog-header-icons {
+  display: none !important;
+}
+
+.p-dialog-header{
+  justify-content: center;
+}
