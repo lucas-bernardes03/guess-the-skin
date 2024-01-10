@@ -1,0 +1,17 @@
+.chartContainer{
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.chartBar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  height: 40px;
+}
+
+.label{
+  width: 20px
+}

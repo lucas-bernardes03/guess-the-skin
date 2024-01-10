@@ -205,6 +205,6 @@ export class AppComponent implements OnInit{
   //DETALHAR MODAL END GAME - estilização do chart / countdown ate o proximo jogo
   //ACESSIBILIDADE - ariaLabels
   //PERSISTIR DADOS DO JOGO NO REFRESH - fixes no sistema do localstorage
-  //CHART DE HISTORICO DINAMICO C/ ANIMATIONS
+  //CHART C/ ANIMATIONS
 }
 
