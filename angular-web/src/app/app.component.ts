@@ -164,7 +164,28 @@ export class AppComponent implements OnInit{
           gamesWon: 10,
           currentStreak: 10,
           largestStreak: 10,
-          distribution: [0, 2, 5, 1, 1, 1, 0]
+          distribution: [{
+            guess: 1,
+            times: 1
+          },{
+            guess: 2,
+            times: 3
+          },{
+            guess: 3,
+            times: 1
+          },{
+            guess: 4,
+            times: 3
+          },{
+            guess: 5,
+            times: 1
+          },{
+            guess: 6,
+            times: 1
+          },{
+            guess: 7,
+            times: 0
+          },]
         }
       },
       header: won ? "Congratulations!" : "You Lost :(",
@@ -184,6 +205,6 @@ export class AppComponent implements OnInit{
   //DETALHAR MODAL END GAME - estilização do chart / countdown ate o proximo jogo
   //ACESSIBILIDADE - ariaLabels
   //PERSISTIR DADOS DO JOGO NO REFRESH - fixes no sistema do localstorage
-  //CHART DE HISTORICO DINAMICO NGFOR
+  //CHART DE HISTORICO DINAMICO C/ ANIMATIONS
 }
 
