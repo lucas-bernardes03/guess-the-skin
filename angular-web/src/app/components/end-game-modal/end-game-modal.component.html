@@ -22,6 +22,11 @@
   <div class="chart">
     <h2>Shots Taken</h2>
 
-    <app-stat-chart [stats]="distribution"></app-stat-chart>
+    <app-stat-chart [stats]="distribution" [totalGames]="statistics.totalGames"></app-stat-chart>
+  </div>
+
+  <div>
+    <p>Next game in </p>
+    <countdown [config]="cdConfig" />
   </div>
 </div>

@@ -14,6 +14,9 @@ export class StatChartComponent implements OnInit{
   @Input()
   stats !: any
 
+  @Input()
+  totalGames !: any
+
   ngOnInit() {
     console.log('stats', this.stats)
   }
@@ -22,9 +25,12 @@ export class StatChartComponent implements OnInit{
     return {
       backgroundColor: '#fcac19',
       borderRadius: '5px',
-      width: `${stat.times * 100}px`,
+      width: `${500 / this.totalGames * stat.times}px`,
       height: '30px',
-      marginLeft: '10px'
+      marginLeft: '10px',
+      display: 'flex',
+      justifyContent: 'end',
+      alignItems: 'center'
     }
   }
 }

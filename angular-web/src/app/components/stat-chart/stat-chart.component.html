@@ -4,7 +4,9 @@
     <p-image *ngIf="stat.guess == 1" src="assets/images/headshot1.png" alt="Headshot!" width="20"></p-image>
     <p *ngIf="stat.guess != 1 && stat.guess != 7" class="label">{{stat.guess}}</p>
     <p-image *ngIf="stat.guess == 7" src="assets/images/skull.png" alt="Dead!" width="20" height="23"></p-image>
-    <div [style]="getStyle(stat)"></div>
+    <div *ngIf="stat.times > 0" [style]="getStyle(stat)">
+      <p class="dataTimes">{{stat.times}}</p>
+    </div>
   </div>
 
 </div>

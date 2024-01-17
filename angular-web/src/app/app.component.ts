@@ -160,31 +160,31 @@ export class AppComponent implements OnInit{
       data: {
         win: won,
         statistics: {
-          totalGames: 10,
-          gamesWon: 10,
-          currentStreak: 10,
-          largestStreak: 10,
+          totalGames: 2,
+          gamesWon: 1,
+          currentStreak: 1,
+          largestStreak: 1,
           distribution: [{
             guess: 1,
-            times: 1
+            times: 0
           },{
             guess: 2,
-            times: 3
+            times: 0
           },{
             guess: 3,
             times: 1
           },{
             guess: 4,
-            times: 3
+            times: 0
           },{
             guess: 5,
-            times: 1
+            times: 0
           },{
             guess: 6,
-            times: 1
+            times: 0
           },{
             guess: 7,
-            times: 0
+            times: 1
           },]
         }
       },
