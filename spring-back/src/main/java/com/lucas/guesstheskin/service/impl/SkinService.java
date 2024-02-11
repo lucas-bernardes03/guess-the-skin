@@ -5,6 +5,8 @@ import com.lucas.guesstheskin.entity.SkinGuess;
 import com.lucas.guesstheskin.repository.ISkinRepository;
 import com.lucas.guesstheskin.service.ISkinService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
+@EnableScheduling
 public class SkinService implements ISkinService {
 
     @Autowired
@@ -54,6 +57,13 @@ public class SkinService implements ISkinService {
 
             this.dataMap.put("nameList", mapList);
         }
+    }
+
+    @Scheduled(cron = "0 0 0 * * *", zone = "GMT-3")
+    public void updateSchedule(){
+        System.out.println("(*) Update skin schedule initialized!");
+        this.dataMap.put("skin", getRandomSkin());
+        System.out.println("(+) New skin selected!");
     }
 
 }
